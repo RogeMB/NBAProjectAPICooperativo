@@ -4,12 +4,15 @@ import { AppComponent } from './app.component';
 import { ImportsMaterialModule } from 'src/imports-material/imports-material.module';
 import { LandingComponent } from './components/landing/landing.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     HeaderComponent,
+    CarouselComponent,
 
   
 
@@ -17,6 +20,7 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     AppRoutingModule,
     ImportsMaterialModule,
+    NgbModule,
     
   ],
   providers: [],
