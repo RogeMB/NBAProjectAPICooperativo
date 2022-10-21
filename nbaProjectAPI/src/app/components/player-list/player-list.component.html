@@ -1,1 +1,18 @@
-<p *ngFor="let player of listaCompleta">{{player.firstName}} {{player.lastName}}</p>
+<app-header></app-header>
+    <mat-select class="selector" [(ngModel)]="anio" (valueChange)="getPlayersAnioEspecifico()">
+        <mat-option [value]="anio" *ngFor="let anio of anios">{{anio}}</mat-option>
+</mat-select>
+<mat-grid-list cols="7" rowHeight="1:1.20">
+    <mat-grid-tile class="cajaCentral"*ngFor="let player of listaCompleta">
+        <mat-card class="example-card">
+        <img [src]="getFotoPlayer(player)" onerror="this.src='https://thumbs.dreamstime.com/b/ning%C3%BAn-icono-disponible-de-la-imagen-ejemplo-del-vector-dise%C3%B1o-plano-140476186.jpg'" alt="{{player.firstName}}">
+        <mat-card-content>
+         {{player.firstName}} {{player.lastName}}   
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+
+

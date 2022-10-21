@@ -1,0 +1,27 @@
+.example-card {
+    max-width: 80%;
+  }
+  
+  .example-header-image img {
+   
+    width: 110%;
+    background-size: cover;
+    border-radius: 20px;
+
+}
+.cajaCentral {
+    text-align: center;
+    padding: 5px;
+    margin: auto;
+}
+.example-card img{
+    max-width: 100%; 
+    margin-top: 15px;
+}
+.selector{
+    background-color: aqua;
+    max-width: 20%;
+}
+.borde{
+    border: solid 2px red;
+}
