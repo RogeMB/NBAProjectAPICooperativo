@@ -1,0 +1,10 @@
+.cajaCentral {
+  max-width: 50%;
+  max-height: 50%;
+  text-align: center;
+  padding: 5px;
+  margin: auto;
+}
+.header {
+    padding: 5px;
+}
