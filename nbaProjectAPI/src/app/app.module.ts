@@ -6,6 +6,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TeamsComponent } from './components/teams/teams.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LandingComponent,
     HeaderComponent,
     CarouselComponent,
+    TeamsComponent,
 
   
 
