@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ImgSrcStyleBuilder } from '@angular/flex-layout';
-import { UrlCreationOptions } from '@angular/router';
 import { TeamsService } from 'src/app/services/teams.service';
 import { TeamDetails } from 'src/interfaces/teams.interface';
 
@@ -16,7 +14,7 @@ export class TeamsComponent implements OnInit {
   year: number = 0;
   id: number = 0;
   yearList: number[] = []
-
+  prueba:string = ''
 
   constructor(private teamsService: TeamsService) { }
 
@@ -41,6 +39,15 @@ export class TeamsComponent implements OnInit {
   }
 
   onImgError(event: ErrorEvent) {
-    (event.target as HTMLImageElement).src = '../../../assets/img/Team NOT Found.jpg';
+    (event.target as HTMLImageElement).src = '../../../assets/img/teamnotfound.jpg';
   }
+
+  onActivate(event: Event) {
+    window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+     });
+ }
+
 }

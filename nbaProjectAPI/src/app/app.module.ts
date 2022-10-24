@@ -5,8 +5,8 @@ import { ImportsMaterialModule } from 'src/imports-material/imports-material.mod
 import { LandingComponent } from './components/landing/landing.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TeamsComponent } from './components/teams/teams.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -15,15 +15,11 @@ import { TeamsComponent } from './components/teams/teams.component';
     HeaderComponent,
     CarouselComponent,
     TeamsComponent,
-
-  
-
   ],
   imports: [
     AppRoutingModule,
     ImportsMaterialModule,
-    NgbModule,
-    
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
