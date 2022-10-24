@@ -6,6 +6,8 @@ import { PlayerListComponent } from './components/player-list/player-list.compon
 import { LandingComponent } from './components/landing/landing.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { TeamsComponent } from './components/teams/teams.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -15,18 +17,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PlayerListComponent,
     LandingComponent,
     HeaderComponent,
+    CarouselComponent,
+    TeamsComponent,
     CarouselComponent
 
-  
+
 
   ],
   imports: [
     AppRoutingModule,
     ImportsMaterialModule,
+    FlexLayoutModule,
     NgbModule,
     ReactiveFormsModule,
     FormsModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
