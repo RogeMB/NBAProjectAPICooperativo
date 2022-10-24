@@ -16,7 +16,7 @@ public getPlayers(fecha:string): Observable<PlayerResponse>{
   return this.http.get<PlayerResponse>(`${environment.API_BASE_URL}/${fecha}/players.json`)
 }
 
-public getPlayerInfo(year: string, id:string){
+public getPlayerInfo(year: string, id:string): Observable<PlayerInfo>{
   return this.http.get<PlayerInfo>(`${environment.API_BASE_URL}/${year}/players/${id}_profile.json`)
 }
 

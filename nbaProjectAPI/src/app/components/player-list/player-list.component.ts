@@ -12,7 +12,7 @@ export class PlayerListComponent implements OnInit {
   listaCompleta: Player[] = [];
   listaOeste: Player[] = [];
   listaEste: Player[] = [];
-  anio = '2012';
+  anio = '2022';
   teamId: string = '';
   constructor(private playerService: PlayersService) { }
 
@@ -29,10 +29,10 @@ export class PlayerListComponent implements OnInit {
   getPlayersAnioEspecifico() {
     this.playerService.getPlayers(this.anio).subscribe(resp => {
       this.listaCompleta = resp.league.standard ;
-    }); 
+    });
 
   }
-  
+
   getFotoTeamPlayer(p: Player): string{
     return `https://cdn.nba.com/logos/nba/${p.teamId}/global/L/logo.svg`
    }
