@@ -20,7 +20,6 @@ export class PlayerListComponent implements OnInit {
     this.playerService.getPlayers(this.anio).subscribe(resp => {
       this.listaCompleta = resp.league.standard;
     });
-    this.getFotoTeamPlayer();
   }
 
   getFotoPlayer(p: Player) {
@@ -35,11 +34,9 @@ export class PlayerListComponent implements OnInit {
     this.playerService.getPlayers(this.anio).subscribe(resp => {
       this.listaCompleta = resp.league.standard ;
     }); 
+    console.log(this.anio)
   }
-  getFotoTeamPlayer(): string{
-    this.listaCompleta.forEach(resp => {
-      resp.teamId = this.teamId
-    })
-    return `https://cdn.nba.com/logos/nba/${this.teamId}/global/L/logo.svg`
+  getFotoTeamPlayer(p: Player): string{
+    return `https://cdn.nba.com/logos/nba/${p.teamId}/global/L/logo.svg`
    }
 }
