@@ -1,0 +1,27 @@
+.example-card {
+    min-width: 250px;
+    max-width: 250px;
+    max-height: 300px;
+  }
+  
+.example-header-image {
+    background-size: cover;
+  }
+.cajaCentral {
+    text-align: center;
+    margin: auto;
+}
+.selector{
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.767);
+  border: none;
+  padding: 0.25em 1em 0 0;
+  margin: 10px;
+  width: 10%;
+  font-family: inherit;
+  font-size: 1.5em;
+  cursor: inherit;
+  line-height: inherit;
+  opacity: 0.75;
+  border-radius: 5px;
+}
