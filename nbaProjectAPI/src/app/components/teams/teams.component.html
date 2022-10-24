@@ -42,12 +42,12 @@
     </div>
 
   </div>
-
-</div>
-  <router-outlet (click)="onActivate($event)">
-  <div class="example-button-container">
-    <button mat-fab color="warn" aria-label="Example icon button with a home icon">
-      <mat-icon>arrow_upward</mat-icon>
-    </button>
+  <div (click)="onActivate($event)">
+    <div class="example-button-container">
+      <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+    </div>
   </div>
-</router-outlet>
+</div>
+
