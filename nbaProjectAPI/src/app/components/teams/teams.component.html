@@ -1,37 +1,38 @@
 <app-header></app-header>
+
 <div class="container-fluid">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb fs-4">
-      <li class="breadcrumb-item fw-bold text-uppercase"><a routerLink="/menu" class="text-decoration-none">H o m e</a></li>
+      <li class="breadcrumb-item fw-bold text-uppercase"><a routerLink="/landing" class="text-decoration-none">H o m e</a></li>
       <li class="breadcrumb-item active text-danger active" aria-current="page">C h a r a c t e r s</li>
     </ol>
   </nav>
+
   <div class="d-flex justify-content-end ms-6" >
     <mat-form-field appearance="fill" class="gradient-custom rounded p-3 m-5">
-    <mat-label class="fw-bold text-light text-opacity-70">Temporada</mat-label>
-    <mat-select  [(value)]="year" (selectionChange)="putYear()">
-      <mat-option  *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
-    </mat-select>
-    <mat-hint class="text-light" align="start">Selecciona un año</mat-hint>
-  </mat-form-field>
-
+      <mat-label class="fw-bold text-light text-opacity-70">Temporada</mat-label>
+      <mat-select  [(value)]="year" (selectionChange)="putYear()">
+        <mat-option  *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
+      </mat-select>
+      <mat-hint class="text-light" align="start">Selecciona un año</mat-hint>
+    </mat-form-field>
   </div>
+
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <div id="scroll-indicator"></div>
 
   <div class="d-flex justify-content-center">
-
-    <mat-form-field appearance="fill" class="gradient-custom m-2 rounded">
+    <mat-form-field appearance="fill" class="gradient-custom m-2 rounded widthCustom">
       <mat-label class="text-light text-center">Buscar...</mat-label>
       <input [(ngModel)]="prueba" matInput placeholder="Equipo">
       <mat-hint class="text-light">Escribe el nombre del equipo</mat-hint>
     </mat-form-field>
   </div>
 
-
-
   <div class="m-4" fxLayout="row grid" fxLayoutAlign="space-around center center" fxLayoutGap="30px grid" >
     <div fxFlex="20" fxFlex.sm="50" fxFlex.xs="80" *ngFor="let team of teamList">
-      <mat-card class="example-card" *ngIf="team.fullName.includes(prueba)">
+      <mat-card class="example-card" *ngIf="team.fullName.toLowerCase().startsWith(prueba.toLocaleLowerCase()) || team.fullName.toUpperCase().startsWith(prueba.toLocaleUpperCase()) 
+      || team.nickname.toLowerCase().startsWith(prueba.toLocaleLowerCase()) || team.nickname.toLocaleUpperCase().startsWith(prueba.toLocaleUpperCase())  ">
         <mat-card-content class="fw-bold text-center fs-3">
           <p>
             {{team.nickname}}
@@ -40,8 +41,8 @@
         <img mat-card-image [src]="getPhotoUrl(team)" class="image" (error)="onImgError($event)"  alt="Photo of team's logo">
       </mat-card>
     </div>
-
   </div>
+  
   <div (click)="onActivate($event)">
     <div class="example-button-container">
       <button mat-fab color="warn" aria-label="Example icon button with a home icon">

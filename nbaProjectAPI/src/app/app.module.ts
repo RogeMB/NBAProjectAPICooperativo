@@ -10,6 +10,7 @@ import { TeamsComponent } from './components/teams/teams.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TeamsDetailComponent } from './components/teams/teams-detail/teams-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     CarouselComponent,
     TeamsComponent,
-    CarouselComponent
+    CarouselComponent,
+    TeamsDetailComponent
 
 
 

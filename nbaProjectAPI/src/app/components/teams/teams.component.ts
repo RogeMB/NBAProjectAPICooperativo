@@ -15,6 +15,7 @@ export class TeamsComponent implements OnInit {
   id: number = 0;
   yearList: number[] = []
   prueba:string = ''
+ 
 
   constructor(private teamsService: TeamsService) { }
 
@@ -27,6 +28,13 @@ export class TeamsComponent implements OnInit {
     for (let i = 0; i < 7; i++) {
       this.yearList.push(this.year-i);
     }
+    const scroll_indicator: any = document.getElementById("scroll-indicator");
+      window.addEventListener("scroll", function () {
+      const maxScrollHeight = document.body.scrollHeight - window.innerHeight;
+
+      const currentScrollHeight = (window.scrollY / maxScrollHeight) * 100;
+      scroll_indicator.style.width = `${currentScrollHeight}%`;
+  });
   }
 
   putYear(){
@@ -49,5 +57,8 @@ export class TeamsComponent implements OnInit {
             behavior: 'smooth'
      });
  }
+
+ 
+
 
 }
