@@ -4,19 +4,15 @@
 </mat-select>
 <mat-grid-list cols="6" rowHeight="1:1">
   <mat-grid-tile class="cajaCentral" *ngFor="let player of listaCompleta">
-    <!-- <mat-card class="example-card">
-        <img [src]="getFotoPlayer(player)" onerror="this.src='https://thumbs.dreamstime.com/b/ning%C3%BAn-icono-disponible-de-la-imagen-ejemplo-del-vector-dise%C3%B1o-plano-140476186.jpg'" alt="{{player.firstName}}">
-        <mat-card-content>
-         {{player.firstName}} {{player.lastName}}   
-        </mat-card-content>
-      </mat-card> -->
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image">
         <img [src]="getFotoTeamPlayer(player)" alt=""> 
         </div>
-        <mat-card-title>{{ player.firstName }}</mat-card-title>
-        <mat-card-subtitle>{{ player.firstName }} {{ player.lastName }}</mat-card-subtitle>
+        <mat-card-title><a [routerLink]="['/player-details',anio,player.personId]" routerLinkActive="Active" >{{ player.firstName }}</a></mat-card-title>
+        <mat-card-subtitle>{{ player.firstName }} {{ player.lastName }}
+          {{player.personId}}
+        </mat-card-subtitle>
       </mat-card-header>
       <img [src]="getFotoPlayer(player)"
         onerror="this.src='https://thumbs.dreamstime.com/b/ning%C3%BAn-icono-disponible-de-la-imagen-ejemplo-del-vector-dise%C3%B1o-plano-140476186.jpg'"

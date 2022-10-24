@@ -26,16 +26,13 @@ export class PlayerListComponent implements OnInit {
     return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${p.personId}.png`;
   }
 
-  getOneYearFotoPlayer(): string {
-    return `http://data.nba.net/data/10s/prod/v1/${this.anio}/players.json`;
-  }
-
   getPlayersAnioEspecifico() {
     this.playerService.getPlayers(this.anio).subscribe(resp => {
       this.listaCompleta = resp.league.standard ;
     }); 
-    console.log(this.anio)
+
   }
+  
   getFotoTeamPlayer(p: Player): string{
     return `https://cdn.nba.com/logos/nba/${p.teamId}/global/L/logo.svg`
    }
