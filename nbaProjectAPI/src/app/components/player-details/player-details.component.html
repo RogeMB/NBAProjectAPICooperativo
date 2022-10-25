@@ -1,16 +1,14 @@
 <app-header></app-header>
 <mat-grid-list cols="2" rowHeight="1:1">
-    
-
     <mat-grid-tile rowspan="1" >
-        <img [src]="getFotoTeamPlayer(player)" alt="" class="escudo"> 
+        <img [src]="getFotoTeamPlayer(player)" alt="" class="escudo">
         <img class="fotoPlayer" [src]="getFotoPlayer()"
       onerror="this.src='https://images.hive.blog/p/YpihifdXP4WNbGMdjw7e3DuhJWBvCw4SfuLZsrnJYHEpsqZFkiGGNCQDjARFNbziVgPQ8u8C8ZxBkWry1BGDcMPZKLV38JyYuGuLoZzVxW1ykgqw44hzmou5gb6WTjZebNjYRp6wFfpp9cPa2vLwcnV4pqqJ78K3PoNyRRUMwtp6?format=match&mode=fit'"
       alt="{{player.firstName}}"></mat-grid-tile>
     <mat-grid-tile>
         <ul>
             &nbsp;
-            <h2 style="font-size: 2em;">Information</h2> 
+            <h2 style="font-size: 2em;">Information</h2>
             &nbsp;
             <li>Name: {{player.firstName}}</li>
             <li>Surname: {{player.lastName}}</li>
@@ -19,14 +17,17 @@
             <li>Country: {{player.country}}</li>
             <li>Years like professional: {{player.yearsPro}}</li>
             &nbsp;
-            <h2 style="font-size: 2em;">Stats</h2>            
+            <h2 style="font-size: 2em;">Stats</h2>
             <li>Assists: {{playerInfo.assists}}</li>
             <li>Blocks: {{playerInfo.blocks}}</li>
             <li>Steals: {{playerInfo.steals}}</li>
             <li>TurnOvers: {{playerInfo.turnovers}}</li>
             <li>Games played: {{playerInfo.gamesPlayed}}</li>
             &nbsp;
-            <h2></h2>
+            <h2>Career</h2>
+            <div *ngFor="let item of listadoEquiposPlayer">
+              {{item.city}}
+            </div>
 
         </ul>
     </mat-grid-tile>
@@ -35,7 +36,7 @@
 
 <!-- <div class="mainContainer">
   <div class="info">
-    
+
     <div>
       {{player.firstName}}, {{player.lastName}}, {{player.heightMeters}}
     </div>

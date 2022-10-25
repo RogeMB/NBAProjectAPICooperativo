@@ -16,14 +16,17 @@ export class PlayerDetailsComponent implements OnInit {
   idPlayer = '';
   player: Player = {} as Player;
   listaCompleta: Player[] = [];
+  listaCompleta2: Player[] = [];
   playerInfo: CareerSummary = {} as CareerSummary;
   listadoEquipos: TeamDetails[] = [];
+  anios: string[] = ['2016', '2017', '2018', '2019', '2020', '2021', '2022'];
+  listadoEquiposPlayer: TeamDetails[] = [];
 
   constructor(
     private playerService: PlayersService,
     private ruta: Router,
     private teamService: TeamsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.playerService.getPlayers(this.getAnio()).subscribe((resp) => {
@@ -34,27 +37,56 @@ export class PlayerDetailsComponent implements OnInit {
           this.player = it;
         }
       }
+
+      for (let i = 0; i < this.anios.length; i++) {
+        this.playerService.getPlayers(this.anio[i]).subscribe((a)=>{
+          this.listaCompleta2 = a.league.standard
+        })
+        this.teamService.getTeams(Number(this.anio[i])).subscribe((a)=>{
+          this.listadoEquipos = a.league.standard
+        })
+
+        for (let it of this.listaCompleta2) {
+          if (it.teamId == this.listadoEquipos[i].teamId) {
+            this.listadoEquiposPlayer.push(this.listadoEquipos[i])
+          }
+        }
+      }
     });
-    this.playerService
-      .getPlayerInfo(this.getAnio(), this.getId())
-      .subscribe((resp) => {
-        this.playerInfo = resp.league.standard.stats.careerSummary;
-      });
+
+    this.playerService.getPlayerInfo(this.getAnio(), this.getId()).subscribe((resp) => {
+      this.playerInfo = resp.league.standard.stats.careerSummary;
+    });
+
+    // for (let index = 0; index < this.anios.length; index++) {
+    //   this.teamService.getTeams(Number(this.anios[index])).subscribe((resp) => {
+    //     this.listadoEquipos = resp.league.standard;
+    //     for (let i of this.listadoEquipos) {
+    //       if (i.teamId == this.player.teamId) {
+    //         this.listadoEquiposPlayer.push(i);
+
+    //       }
+
+    //     }
+
+    //   });
+
+    //
   }
 
-  getFotoPlayer() {
-    return `https://ak-static.cms.nba.com/wp-content/uploads/silos/nba/latest/440x700/${this.getId()}.png`;
-  }
+    getFotoPlayer() {
+      return `https://ak-static.cms.nba.com/wp-content/uploads/silos/nba/latest/440x700/${this.getId()}.png`;
+    }
 
-  getAnio() {
-    return this.ruta.url.split('/')[2];
-  }
+    getAnio() {
+      return this.ruta.url.split('/')[2];
+    }
 
-  getId() {
-    return this.ruta.url.split('/')[3];
-  }
+    getId() {
+      return this.ruta.url.split('/')[3];
+    }
 
-  getFotoTeamPlayer(p: Player): string {
-    return `https://cdn.nba.com/logos/nba/${this.player.teamId}/global/L/logo.svg`;
+    getFotoTeamPlayer(p: Player): string {
+      return `https://cdn.nba.com/logos/nba/${this.player.teamId}/global/L/logo.svg`;
+    }
   }
-}

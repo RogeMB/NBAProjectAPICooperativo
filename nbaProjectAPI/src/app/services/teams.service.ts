@@ -11,7 +11,7 @@ export class TeamsService {
 
   constructor(private http: HttpClient)  { }
 
-  getTeams(year:string): Observable<TeamsResponse>{
+  getTeams(year:number): Observable<TeamsResponse>{
     return this.http.get<TeamsResponse>(`${environment.API_BASE_URL}/${year}/teams.json`);
   }
 
