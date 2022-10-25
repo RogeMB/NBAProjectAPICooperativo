@@ -35,7 +35,7 @@ export class PlayerDetailsComponent implements OnInit {
     }
 
   getFotoPlayer() {
-    return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${this.getId()}.png`;
+    return `https://ak-static.cms.nba.com/wp-content/uploads/silos/nba/latest/440x700/${this.getId()}.png`;
   };
 
   getAnio(){
@@ -45,4 +45,8 @@ export class PlayerDetailsComponent implements OnInit {
   getId(){
     return this.ruta.url.split('/')[3]
   };
+
+  getFotoTeamPlayer(p: Player): string{
+    return `https://cdn.nba.com/logos/nba/${this.player.teamId}/global/L/logo.svg`
+   }
 }
