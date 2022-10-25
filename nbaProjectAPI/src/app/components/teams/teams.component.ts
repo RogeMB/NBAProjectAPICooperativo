@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamsService } from 'src/app/services/teams.service';
-import { TeamDetails } from 'src/interfaces/teams.interface';
+import { TeamDetails } from 'src/app/Interfaces/teams.interface';
 
 @Component({
   selector: 'app-teams',
@@ -12,14 +12,24 @@ export class TeamsComponent implements OnInit {
   teamUrl : string = 'https://cdn.nba.com/logos/nba/';
   teamList: TeamDetails[] = []
   year: number = 0;
-  id: number = 0;
   yearList: number[] = []
   prueba:string = ''
- 
+  scrollBar: any;
 
   constructor(private teamsService: TeamsService) { }
 
   ngOnInit(): void {
+
+    this.puttingYears(this.year);
+    this.scrollingInTheDeep(this.scrollBar);
+  }
+
+  putYear(){
+    this.teamsService.getTeams(this.year).subscribe(response =>
+      this.teamList = response.league.standard)
+  }
+
+  puttingYears(year:number) {
     this.year = new Date().getFullYear();
 
     this.teamsService.getTeams(this.year).subscribe(response =>
@@ -28,18 +38,6 @@ export class TeamsComponent implements OnInit {
     for (let i = 0; i < 7; i++) {
       this.yearList.push(this.year-i);
     }
-    const scroll_indicator: any = document.getElementById("scroll-indicator");
-      window.addEventListener("scroll", function () {
-      const maxScrollHeight = document.body.scrollHeight - window.innerHeight;
-
-      const currentScrollHeight = (window.scrollY / maxScrollHeight) * 100;
-      scroll_indicator.style.width = `${currentScrollHeight}%`;
-  });
-  }
-
-  putYear(){
-    this.teamsService.getTeams(this.year).subscribe(response =>
-      this.teamList = response.league.standard)
   }
 
   getPhotoUrl(team: TeamDetails): string{
@@ -56,9 +54,15 @@ export class TeamsComponent implements OnInit {
             left: 0,
             behavior: 'smooth'
      });
- }
+  }
 
- 
+  scrollingInTheDeep(scroll_indicator: any) {
+    scroll_indicator = document.getElementById("scroll-indicator");
+    window.addEventListener("scroll", function () {
+    const maxScrollHeight = document.body.scrollHeight - window.innerHeight;
 
-
+    const currentScrollHeight = (window.scrollY / maxScrollHeight) * 100;
+    scroll_indicator.style.width = `${currentScrollHeight}%`;
+    });
+  }
 }

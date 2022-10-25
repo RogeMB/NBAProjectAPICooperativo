@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import { PlayerListComponent } from './components/player-list/player-list.component';
+import { TeamsDetailComponent } from './components/teams/teams-detail/teams-detail.component';
 import { TeamsComponent } from './components/teams/teams.component';
 
 const routes: Routes = [
   {path: 'players', component:PlayerListComponent},
   {path: 'teams', component: TeamsComponent},
+  {path: 'teamsdetails/:year/:teamid', component: TeamsDetailComponent},
   {path: 'landing', component:LandingComponent},
+
   {path: '', redirectTo:"/landing",pathMatch:"full"}
 ];
 

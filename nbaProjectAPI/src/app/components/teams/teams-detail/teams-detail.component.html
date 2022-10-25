@@ -1,1 +1,23 @@
-<p>teams-detail works!</p>
+<app-header></app-header>
+
+<div class="container-fluid">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb fs-4">
+      <li class="breadcrumb-item fw-bold text-uppercase"><a routerLink="/landing" class="text-decoration-none">H o m e</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a routerLink="/teams" class="text-decoration-none">T e a m s</a></li>
+      <li class="breadcrumb-item active text-danger active" aria-current="page">D e t a i l s</li>
+    </ol>
+  </nav>
+
+  <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+  <div id="scroll-indicator"></div>
+
+
+  <div (click)="onActivate($event)">
+    <div class="example-button-container">
+      <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
