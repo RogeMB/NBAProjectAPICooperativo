@@ -6,6 +6,8 @@ import { PlayerListComponent } from './components/player-list/player-list.compon
 import { LandingComponent } from './components/landing/landing.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { TeamsComponent } from './components/teams/teams.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
@@ -17,18 +19,21 @@ import { PlayerDetailsComponent } from './components/player-details/player-detai
     LandingComponent,
     HeaderComponent,
     CarouselComponent,
-    PlayerDetailsComponent
+    PlayerDetailsComponent,
+    TeamsComponent,
+    CarouselComponent
 
-  
+
 
   ],
   imports: [
     AppRoutingModule,
     ImportsMaterialModule,
+    FlexLayoutModule,
     NgbModule,
     ReactiveFormsModule,
     FormsModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
