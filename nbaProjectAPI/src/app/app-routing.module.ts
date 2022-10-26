@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PlayerListComponent } from './components/player-list/player-list.component';
 import { TeamsDetailComponent } from './components/teams/teams-detail/teams-detail.component';
 import { TeamsComponent } from './components/teams/teams.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: 'teamsdetails/:year/:teamid', component: TeamsDetailComponent},
   {path: 'landing', component:LandingComponent},
 
+  {path: '**', component: PageNotFoundComponent},
   {path: '', redirectTo:"/landing",pathMatch:"full"}
 ];
 

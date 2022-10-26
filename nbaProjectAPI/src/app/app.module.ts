@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamsDetailComponent } from './components/teams/teams-detail/teams-detail.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TeamsDetailComponent } from './components/teams/teams-detail/teams-deta
     CarouselComponent,
     TeamsComponent,
     CarouselComponent,
-    TeamsDetailComponent
+    TeamsDetailComponent,
+    PageNotFoundComponent
 
 
 

@@ -7,7 +7,7 @@ import { RosterDetail } from 'src/app/Interfaces/teams-roster.interface';
 import { Coachs } from 'src/app/Interfaces/coach.interface';
 import { ActivatedRoute } from '@angular/router';
 import { PlayersService } from 'src/app/services/players.service';
-import { Player, Team } from 'src/app/Interfaces/player.interface';
+import { Player } from 'src/app/Interfaces/player.interface';
 
 
 
@@ -19,22 +19,23 @@ import { Player, Team } from 'src/app/Interfaces/player.interface';
   styleUrls: ['./teams-detail.component.css']
 })
 export class TeamsDetailComponent implements OnInit {
-  
+
   teamUrl : string = 'https://cdn.nba.com/logos/nba/';
   coachUrl: string = 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190';
   playerUrl: string = 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190';
   coachesList: Coachs[] = [];
-  year: number = 2022;
+  year: number = 0;
   teamList: TeamDetails[] = [];
   playersList: RosterDetail [] = [];
   teamID: String = {} as String;
-  yearList: number [] = [];
+  yearList: number [] = [2022, 2021, 2019, 2018, 2017];
   scrollBar: any;
   teamSelected: TeamDetails = {} as TeamDetails;
   coachSelected: Coachs = {} as Coachs;
   idTeamLink: String= {} as String;
   yearLink = new Date().getFullYear();
   playerList2: Player [] = [];
+
 
   constructor(private route: ActivatedRoute, private playerService: PlayersService, private teamsService: TeamsService, private rosterService: TeamsDetailService, private coachService: CoachsService) { }
 
@@ -43,6 +44,10 @@ export class TeamsDetailComponent implements OnInit {
     this.getParams();
     this.scrollingInTheDeep(this.scrollBar);
     this.getTeam();
+    this.getCoach(this.yearLink);
+    this.getRosterTeam(this.yearLink, this.idTeamLink);
+    this.putYear(this.year);
+
 
     /*
     this.teamsService.getTeams(this.year).subscribe(response =>{
@@ -59,46 +64,35 @@ export class TeamsDetailComponent implements OnInit {
     console.log(this.playersList);
     */
   }
-  
+
 
   getParams(){
-    this.route.params.subscribe(params => {        
+    this.route.params.subscribe(params => {
       this.yearLink = params ['year'];
       this.idTeamLink = params ['teamid'];
     });
   }
 
-  putYear(){
-    this.teamsService.getTeams(this.year).subscribe(response =>
+  putYear(year: number){
+    this.yearLink = year;
+    this.teamsService.getTeams(this.yearLink).subscribe(response =>
       this.teamList = response.league.standard);
   }
-  
+
   getTeam() {
-    this.teamsService.getTeams(this.year).subscribe(response => {
+    this.teamsService.getTeams(this.yearLink).subscribe(response => {
       this.teamList = response.league.standard;
-      
-      this.teamList.forEach(team => {
-        if(this.teamID == team.teamId) {
-          this.teamSelected = team;
-        }
-      });  
-    });
-  }
-  
-  getTeamDetails(year: number) {
-    this.teamsService.getTeams(this.year).subscribe(response =>
-      this.teamList = response.league.standard);
 
       this.teamList.forEach(team => {
-        if (team.teamId == this.idTeamLink){
+        if(this.idTeamLink == team.teamId) {
           this.teamSelected = team;
         }
       });
+    });
   }
 
-
   getCoach(year: number) {
-    this.coachService.getTeamCoach(this.year).subscribe(response =>{
+    this.coachService.getTeamCoach(year).subscribe(response =>{
       this.coachesList = response.league.standard;
 
       this.coachesList.forEach(coach => {
@@ -109,14 +103,15 @@ export class TeamsDetailComponent implements OnInit {
     });
   }
 
-  getRosterTeam(year: number, teamID: string) {
-    this.rosterService.getTeamRoster(this.year, String(this.idTeamLink)).subscribe(rosterResponse => {
-      this.playerService.getPlayers(String(this.year)).subscribe(playersResponse => {
-        this.playerList2 = playersResponse.league.standard.filter(player => 
+  getRosterTeam(year: number, teamID: String) {
+    this.rosterService.getTeamRoster(year, String(teamID)).subscribe(rosterResponse => {
+      this.playerService.getPlayers(String(year)).subscribe(playersResponse => {
+        this.playerList2 = playersResponse.league.standard.filter(player =>
           rosterResponse.league.standard.players.map(playersList=> playersList.personId).includes(player.personId));
         });
     });
   }
+
 
   onActivate(event: Event) {
     window.scrollTo({
@@ -140,8 +135,7 @@ export class TeamsDetailComponent implements OnInit {
     return `${this.teamUrl}${this.idTeamLink}/global/L/logo.svg`;
   }
 
-  getFotoCoach(coach: Coachs) {
-    let coachId = coach.personId;
+  getFotoCoach(coachId: string) {
     return `${this.coachUrl}/${coachId}.png`;
   }
 

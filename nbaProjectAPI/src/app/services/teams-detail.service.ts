@@ -12,6 +12,6 @@ export class TeamsDetailService {
   constructor(private http: HttpClient) { }
 
   public getTeamRoster(year: number, teamName: string):Observable<TeamsRosterResponse>{
-    return this.http.get<TeamsRosterResponse>(`${environment.API_BASE_URL}/${year}/teams/${teamName}roster.json`);
+    return this.http.get<TeamsRosterResponse>(`${environment.API_BASE_URL}/${year}/teams/${teamName}/roster.json`);
   }
 }

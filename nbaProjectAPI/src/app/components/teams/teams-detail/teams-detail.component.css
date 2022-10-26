@@ -1,3 +1,20 @@
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #939ffb;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgb(107, 123, 247), rgba(245, 87, 108, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgb(106, 123, 245), rgba(245, 87, 108, 1));
+}
+
+.widthCustom {
+  width: 40vw;
+}
+
+
+
 .example-button-container{
   position: fixed;
   float: right;
@@ -22,4 +39,53 @@
   border-bottom-left-radius: 25px;
   background-image: linear-gradient(to right, #022f74, #3c19bb, #640093, #bf007f, #eb122f);
   z-index: 100;
+}
+
+.customHeight{
+  height: 100px;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+  background-color: white;
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+dt {
+  display: block;
+  line-height: 1.25;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 50%;
+
+}
+
+dd {
+  display: block;
+  line-height: 1.25;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 50%;
+
+}
+
+.customDiv {
+  display: block;
+  justify-content: center;
+  text-align: center;
+}
+
+body {
+  overflow-y: hidden !important;
 }
