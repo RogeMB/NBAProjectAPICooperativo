@@ -12,8 +12,8 @@ const routes: Routes = [
   {path: 'teamsdetails/:year/:teamid', component: TeamsDetailComponent},
   {path: 'landing', component:LandingComponent},
 
-  {path: '**', component: PageNotFoundComponent},
-  {path: '', redirectTo:"/landing",pathMatch:"full"}
+  {path: '', redirectTo: '/landing', pathMatch: 'full'},
+  {path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

@@ -5,7 +5,7 @@ import { TeamDetails } from 'src/app/Interfaces/teams.interface';
 import { CoachsService } from 'src/app/services/coachs.service';
 import { RosterDetail } from 'src/app/Interfaces/teams-roster.interface';
 import { Coachs } from 'src/app/Interfaces/coach.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlayersService } from 'src/app/services/players.service';
 import { Player } from 'src/app/Interfaces/player.interface';
 
@@ -28,25 +28,29 @@ export class TeamsDetailComponent implements OnInit {
   teamList: TeamDetails[] = [];
   playersList: RosterDetail [] = [];
   teamID: String = {} as String;
-  yearList: number [] = [2022, 2021, 2019, 2018, 2017];
+  yearList: number [] = [];
   scrollBar: any;
   teamSelected: TeamDetails = {} as TeamDetails;
   coachSelected: Coachs = {} as Coachs;
   idTeamLink: String= {} as String;
   yearLink = new Date().getFullYear();
   playerList2: Player [] = [];
+  
 
-
-  constructor(private route: ActivatedRoute, private playerService: PlayersService, private teamsService: TeamsService, private rosterService: TeamsDetailService, private coachService: CoachsService) { }
+  constructor(private route: ActivatedRoute, private _router: Router, private playerService: PlayersService, private teamsService: TeamsService, private rosterService: TeamsDetailService, private coachService: CoachsService) { 
+    this._router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit(): void {
 
+    /*this.teamID = String(this.route.snapshot.paramMap.get('teamid'))*/
+
     this.getParams();
+    this.getSeason(this.yearLink);
     this.scrollingInTheDeep(this.scrollBar);
     this.getTeam();
     this.getCoach(this.yearLink);
     this.getRosterTeam(this.yearLink, this.idTeamLink);
-    this.putYear(this.year);
 
 
     /*
@@ -73,10 +77,18 @@ export class TeamsDetailComponent implements OnInit {
     });
   }
 
-  putYear(year: number){
-    this.yearLink = year;
-    this.teamsService.getTeams(this.yearLink).subscribe(response =>
-      this.teamList = response.league.standard);
+  getSeason(year: number) {
+    this.year = new Date().getFullYear();
+
+    this.teamsService.getTeams(this.year).subscribe(response =>
+      this.teamList = response.league.standard.sort());
+    for (let index = 0; index < 7; index++) {
+      this.yearList.push(this.year-index);
+    }
+  }
+
+  putYear(){
+    this._router.navigate(['/teamsdetails', this.yearLink, this.idTeamLink])
   }
 
   getTeam() {

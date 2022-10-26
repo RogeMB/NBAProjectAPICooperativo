@@ -7,8 +7,8 @@
 <div class="d-flex justify-content-end ms-6" >
   <mat-form-field appearance="fill" class="gradient-custom rounded p-3 m-5">
     <mat-label class="fw-bold text-light text-opacity-70">Temporada</mat-label>
-    <mat-select  [(value)]="yearLink" (selectionChange)="ngOnInit()">
-      <mat-option *ngFor="let year of yearList" [value]="yearLink">{{year}}</mat-option>
+    <mat-select  [(ngModel)]="yearLink" (selectionChange)="putYear()">
+      <mat-option *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
     </mat-select>
     <mat-hint class="text-light" align="start">Selecciona un año</mat-hint>
   </mat-form-field>
