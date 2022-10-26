@@ -12,29 +12,35 @@ export class TeamsComponent implements OnInit {
   teamUrl : string = 'https://cdn.nba.com/logos/nba/';
   teamList: TeamDetails[] = []
   year: number = 0;
-  id: number = 0;
   yearList: number[] = []
   prueba:string = ''
+  scrollBar: any;
 
   constructor(private teamsService: TeamsService) { }
 
   ngOnInit(): void {
+
+    this.getSeason(this.year);
+    this.scrollingInTheDeep(this.scrollBar);
+  }
+
+  putYear(){
+    this.teamsService.getTeams(this.year).subscribe(response =>
+      this.teamList = response.league.standard);
+  }
+
+  getSeason(year: number) {
     this.year = new Date().getFullYear();
 
     this.teamsService.getTeams(this.year).subscribe(response =>
-      this.teamList = response.league.standard.sort())
+      this.teamList = response.league.standard.sort());
 
     for (let i = 0; i < 7; i++) {
       this.yearList.push(this.year-i);
     }
   }
 
-  putYear(){
-    this.teamsService.getTeams(this.year).subscribe(response =>
-      this.teamList = response.league.standard)
-  }
-
-  getPhotoUrl(team: TeamDetails): string{
+  getLogoUrl(team: TeamDetails): string{
       return `${this.teamUrl}${team.teamId}/global/L/logo.svg`;
   }
 
@@ -48,6 +54,15 @@ export class TeamsComponent implements OnInit {
             left: 0,
             behavior: 'smooth'
      });
- }
+  }
 
+  scrollingInTheDeep(scroll_indicator: any) {
+    scroll_indicator = document.getElementById("scroll-indicator");
+    window.addEventListener("scroll", function () {
+    const maxScrollHeight = document.body.scrollHeight - window.innerHeight;
+
+    const currentScrollHeight = (window.scrollY / maxScrollHeight) * 100;
+    scroll_indicator.style.width = `${currentScrollHeight}%`;
+    });
+  }
 }
