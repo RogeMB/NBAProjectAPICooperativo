@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamsDetailComponent } from './components/teams/teams-detail/teams-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
+import { PlayerCardComponent } from './components/player-card/player-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PlayerDetailsComponent } from './components/player-details/player-detai
     TeamsComponent,
     CarouselComponent,
     TeamsDetailComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PlayerCardComponent
 
 
 
