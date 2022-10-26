@@ -1,17 +1,26 @@
 <app-header></app-header>
 
+<div [ngStyle]="{ 'text-align': 'center' }" class="cajaImg">
+  <img [src]="getLogoUrl()" [ngStyle]="{ width: '20vw' }" class="image" (error)="onImgError($event)"  alt="Photo of team's logo"/>
+</div>
+
 <div class="container-fluid">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb fs-4">
       <li class="breadcrumb-item fw-bold text-uppercase"><a routerLink="/landing" class="text-decoration-none">H o m e</a></li>
       <li class="breadcrumb-item" aria-current="page"><a routerLink="/teams" class="text-decoration-none">T e a m s</a></li>
-      <li class="breadcrumb-item active text-danger active" aria-current="page">D e t a i l s</li>
+      <li class="breadcrumb-item active text-danger active" aria-current="page">D e t a i l s{{teamSelected.urlName}}</li>
     </ol>
   </nav>
 
+  <div class="text-light fs-2 m-2 w-100 h-100">{{teamSelected.urlName}}</div>
+
   <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
   <div id="scroll-indicator"></div>
-
+  
+  <div *ngFor="let player of playerList2" fxLayout="fxFlex" fxLayoutGap="10px">
+    <img [src]="getFotoPlayer(player.personId)" alt="Jugador">
+  </div>
 
   <div (click)="onActivate($event)">
     <div class="example-button-container">

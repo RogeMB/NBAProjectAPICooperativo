@@ -38,9 +38,9 @@
             {{team.nickname}}
           </p>
         </mat-card-content>
-        <img mat-card-image [src]="getPhotoUrl(team)" class="image" (error)="onImgError($event)"  alt="Photo of team's logo">
-        <a [routerLink]="'/teamsdetails/{{this.year}}/{{team.teamId}}'" class="text-decoration-none"><button mat-button class="btn btn-light w-100 fs-4 fw-bold">Details</button></a>
-        <!--<a [routerLink]="['/teamsdetails/', this.year, team.teamId]" class="text-decoration-none"><button mat-button class="btn btn-light w-100 fs-4 fw-bold">Details</button></a>-->
+        <img mat-card-image [src]="getLogoUrl(team)" class="image" (error)="onImgError($event)"  alt="Photo of team's logo">
+        
+        <a [routerLink]="['/teamsdetails/', this.year, team.teamId]" class="text-decoration-none"><button mat-button class="btn btn-light w-100 fs-4 fw-bold">Details</button></a>
       </mat-card>
     </div>
   </div>

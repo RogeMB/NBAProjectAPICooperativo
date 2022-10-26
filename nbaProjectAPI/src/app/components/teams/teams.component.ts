@@ -20,27 +20,27 @@ export class TeamsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.puttingYears(this.year);
+    this.getSeason(this.year);
     this.scrollingInTheDeep(this.scrollBar);
   }
 
   putYear(){
     this.teamsService.getTeams(this.year).subscribe(response =>
-      this.teamList = response.league.standard)
+      this.teamList = response.league.standard);
   }
 
-  puttingYears(year:number) {
+  getSeason(year: number) {
     this.year = new Date().getFullYear();
 
     this.teamsService.getTeams(this.year).subscribe(response =>
-      this.teamList = response.league.standard.sort())
+      this.teamList = response.league.standard.sort());
 
     for (let i = 0; i < 7; i++) {
       this.yearList.push(this.year-i);
     }
   }
 
-  getPhotoUrl(team: TeamDetails): string{
+  getLogoUrl(team: TeamDetails): string{
       return `${this.teamUrl}${team.teamId}/global/L/logo.svg`;
   }
 
