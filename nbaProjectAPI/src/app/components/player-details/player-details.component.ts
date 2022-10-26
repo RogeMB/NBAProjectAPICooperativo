@@ -18,13 +18,14 @@ export class PlayerDetailsComponent implements OnInit {
   player: Player = {} as Player;
   listaCompleta: Player[] = [];
 
-  listaCompletaPorAnio: Player[] = [];
+  listaCompletaEquipos: TeamDetails[] = [];
+  listaAuxiliar: TeamDetails[] = [];
   playerInfo: CareerSummary = {} as CareerSummary;
   listadoEquipos: TeamDetails[] = [];
   anios: string[] = ['2016', '2017', '2018', '2019', '2020', '2022'];
   listadoEquiposPlayer: TeamDetails[] = [];
   playerLocalizado: Player = {} as Player;
-  teamLocalizado!: string;
+  idEquipoJugadorLocalizado!: string;
 
   constructor(
     private playerService: PlayersService,
@@ -34,47 +35,63 @@ export class PlayerDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.idPlayer = this.ruta.url.split('/')[3];
-    this.getPlayer();
     this.getPlayerInfo();
+    this.getPlayer();
   }
-  getCarrera() {
-    //METODO PARA SACAR LA CARRERA
-    for (let a = 0; a < this.anios.length; a++) {
-      //recorro los años
-      //saco los equipos de cada año
-      this.teamService.getTeams(Number(this.anios[a])).subscribe(resp => {
-        this.listadoEquipos = resp.league.standard;
-        //Recorro la lista de equipos del jugador
-        for (let equipo of this.player.teams) {
-          this.teamLocalizado = equipo.teamId;
-          //Recorro el listado de equipos por año
-          for (let i of this.listadoEquipos) {
-            //Compruebo que el id del equipo coincida con el de la lista de equipos de jugador
-            if (this.teamLocalizado == i.teamId) {
-              console.log(this.anios[a], this.teamLocalizado);
-              //compruebo si está en el listado de equipos del jugador
-              if (!this.listadoEquiposPlayer.includes(i))
-                this.listadoEquiposPlayer.push(i);
-            }
+    //sacar jugador
+    getPlayer() {
+      this.playerService.getPlayers(this.getAnio()).subscribe((resp) => {
+        this.listaCompleta = resp.league.standard;
+        for (let it of this.listaCompleta) {
+          if (it.personId == this.idPlayer) {
+            this.player = it;
           }
         }
-        console.log(this.listadoEquiposPlayer);
       });
     }
-  }
-  //sacar jugador
-  getPlayer() {
-    this.playerService.getPlayers(this.getAnio()).subscribe((resp) => {
-      this.listaCompleta = resp.league.standard;
-      for (let it of this.listaCompleta) {
-        if (it.personId == this.idPlayer) {
-          this.player = it;
-        }
-      }
-      this.getCarrera();
-    });
-  }
+  //       //MÉTODO PARA SACAR TODOS LOS EQUIPOS
+  //       for (let index = 0; index < this.anios.length; index++) {
+  //         this.teamService.getTeams(Number(this.anios[index])).subscribe((resp) => {
+  //           this.listaAuxiliar = resp.league.standard;
+  //           for (let equipo of this.listaAuxiliar) {
+  //             if(!this.listaCompletaEquipos.includes(equipo)){
+  //                   this.listaCompletaEquipos.push(equipo);
+  //               }
 
+  //           }
+
+  //           this.getCarrera();
+  //           console.log(this.listadoEquiposPlayer)
+  //         });
+  //       }
+  //     });
+  //   }
+
+
+
+  // //METODO PARA SACAR LA CARRERA
+  // getCarrera() {
+  //       //Recorro la lista de equipos del jugador
+  //       for (let equipo of this.player.teams) {
+  //         this.idEquipoJugadorLocalizado = equipo.teamId;
+  //         //Recorro el listado de equipos
+  //         for (let i of this.listaCompletaEquipos) {
+  //           //Compruebo que el id del equipo coincida con el de la lista de equipos de jugador
+  //            if(this.idEquipoJugadorLocalizado == i.teamId){
+  //             //Cuando encuentre un equipo en el que haya jugado el jugador
+  //             //Comprueba si ese equipo no está dentro de la lista
+  //             if (!this.listadoEquiposPlayer.includes(i)) {
+  //               this.listadoEquiposPlayer.push(i)
+  //             }
+
+  //            }
+  //           }
+
+  //       //  //compruebo si está en el listado de equipos del jugador
+  //       //       if (!this.listadoEquiposPlayer.includes(i)){
+  //       //       }
+  //       }
+  // }
   getPlayerInfo() {
     this.playerService
       .getPlayerInfo(this.getAnio(), this.idPlayer)
@@ -105,11 +122,11 @@ export class PlayerDetailsComponent implements OnInit {
           }else if(!this.listadoEquiposPlayer.includes(i))
             this.listadoEquiposPlayer.push(i)
         }
-      
+
              }
       }
         return this.listadoEquiposPlayer
-    } 
+    }
   */
 
   //       console.log(this.listadoEquiposPlayer);
