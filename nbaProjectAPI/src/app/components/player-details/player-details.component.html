@@ -1,0 +1,79 @@
+<app-header></app-header>
+<mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile rowspan="1" >
+        <img [src]="getFotoTeamPlayer(player)" alt="" class="escudo">
+        <img class="fotoPlayer" [src]="getFotoPlayer()"
+      onerror="this.src='https://images.hive.blog/p/YpihifdXP4WNbGMdjw7e3DuhJWBvCw4SfuLZsrnJYHEpsqZFkiGGNCQDjARFNbziVgPQ8u8C8ZxBkWry1BGDcMPZKLV38JyYuGuLoZzVxW1ykgqw44hzmou5gb6WTjZebNjYRp6wFfpp9cPa2vLwcnV4pqqJ78K3PoNyRRUMwtp6?format=match&mode=fit'"
+      alt="{{player.firstName}}"></mat-grid-tile>
+    <mat-grid-tile>
+        <ul>
+            &nbsp;
+            <h2 style="font-size: 2em;">Information</h2>
+            &nbsp;
+            <li>Name: {{player.firstName}}</li>
+            <li>Surname: {{player.lastName}}</li>
+            <li>Dorsal: {{player.jersey}}</li>
+            <li>NBA debut year: {{player.nbaDebutYear}}</li>
+            <li>Country: {{player.country}}</li>
+            <li>Years like professional: {{player.yearsPro}}</li>
+            &nbsp;
+            <h2 style="font-size: 2em;">Stats</h2>
+            <li>Assists: {{playerInfo.assists}}</li>
+            <li>Blocks: {{playerInfo.blocks}}</li>
+            <li>Steals: {{playerInfo.steals}}</li>
+            <li>TurnOvers: {{playerInfo.turnovers}}</li>
+            <li>Games played: {{playerInfo.gamesPlayed}}</li>
+            &nbsp;
+            <!-- <h2>Career</h2>
+            <div *ngFor="let equipo of listadoEquiposPlayer">
+              {{equipo.fullName}}
+            </div> -->
+
+        </ul>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+<!-- <div class="mainContainer">
+  <div class="info">
+
+    <div>
+      {{player.firstName}}, {{player.lastName}}, {{player.heightMeters}}
+    </div>
+    <div>
+      {{playerInfo.tpp}}
+    </div> -->
+    <!--          </div>
+    </div>
+    <div class = "related">
+        <mat-card class="tarjeta">
+            <mat-card-title>Películas relacionadas</mat-card-title>
+            <div class = "relatedContainer">
+                <div class="peli" *ngFor="let peli of characterFilmList">
+                    <img mat-card-avatar [src]="getFotoPelicula(peli)" onerror="this.src='https://starwars-visualguide.com/assets/img/placeholder-small.jpg'">
+                    <mat-card-content class = "titulo"><a routerLink="/film-details/{{idFilm}}" routerLinkActive="active">{{peli.title}}</a></mat-card-content>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="tarjeta">
+            <mat-card-title>Vehículos relacionados</mat-card-title>
+            <div class="relatedContainer">
+                <div class="peli" *ngFor="let vehiculo of characterVehicleList">
+                    <img mat-card-avatar [src]="getFotoVehiculo(vehiculo)" onerror="this.src='https://starwars-visualguide.com/assets/img/placeholder-small.jpg'">
+                    <mat-card-content class = "titulo"><a routerLink="/vehicle-details/{{vehiculo.url.split('/')[5]}}" routerLinkActive="active">{{vehiculo.name}}</a></mat-card-content>
+                </div>
+                <mat-card-content *ngIf="characterVehicleList.length == 0">Este personaje no tiene vehículos relacionados</mat-card-content>
+            </div>
+        </mat-card>
+        <mat-card class="tarjeta">
+            <mat-card-title>Naves relacionadas</mat-card-title>
+            <div class="relatedContainer">
+                <div class="peli" *ngFor="let nave of characterStarshipList">
+                    <img mat-card-avatar [src]="getFotoNave(nave)" onerror="this.src='https://starwars-visualguide.com/assets/img/placeholder-small.jpg'">
+                    <mat-card-content class = "titulo"><a routerLink="/starShip-details/{{nave.url.split('/')[5]}}" routerLinkActive="active">{{nave.name}}</a></mat-card-content>
+                </div>
+                <mat-card-content *ngIf="characterStarshipList.length == 0">Este personaje no tiene naves relacionadas</mat-card-content>
+            </div>
+        </mat-card>
+    </div>
+</div> -->

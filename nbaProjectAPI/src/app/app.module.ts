@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamsDetailComponent } from './components/teams/teams-detail/teams-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     LandingComponent,
     HeaderComponent,
     CarouselComponent,
+    PlayerDetailsComponent,
     TeamsComponent,
     CarouselComponent,
     TeamsDetailComponent,
