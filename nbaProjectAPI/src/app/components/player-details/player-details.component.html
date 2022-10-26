@@ -25,8 +25,8 @@
             <li>Games played: {{playerInfo.gamesPlayed}}</li>
             &nbsp;
             <h2>Career</h2>
-            <div *ngFor="let item of listadoEquiposPlayer">
-              {{item.city}}
+            <div *ngFor="let equipo of listadoEquiposPlayer">
+              {{equipo.fullName}}
             </div>
 
         </ul>

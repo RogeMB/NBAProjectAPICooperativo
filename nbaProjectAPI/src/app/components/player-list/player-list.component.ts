@@ -8,7 +8,7 @@ import { PlayersService } from 'src/app/services/players.service';
   styleUrls: ['./player-list.component.css'],
 })
 export class PlayerListComponent implements OnInit {
-  anios: string[] = ['2016','2017','2018','2019','2020','2021','2022'];
+  anios: string[] = ['2016','2017','2018','2019','2020','2022'];
   listaCompleta: Player[] = [];
   listaOeste: Player[] = [];
   listaEste: Player[] = [];
