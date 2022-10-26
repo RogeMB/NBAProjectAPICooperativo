@@ -4,7 +4,41 @@
   text-align: center;
   padding: 5px;
   margin: auto;
+  color: white;
 }
 .header {
     padding: 5px;
+}
+img{
+  opacity: 20%;
+}
+.carrusel{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cajaCentral h1{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  text-transform: uppercase;
+}
+.cajaCentral h3{
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  text-transform: uppercase;
+}
+.cajaCentral p{
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+
 }
