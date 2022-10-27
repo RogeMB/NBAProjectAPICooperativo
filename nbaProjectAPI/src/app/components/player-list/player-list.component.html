@@ -2,20 +2,9 @@
 <mat-select class="selector" [(ngModel)]="anio" (selectionChange)="getPlayersAnioEspecifico()">
   <mat-option  [value]="anio" *ngFor="let anio of anios">{{ anio }}</mat-option>
 </mat-select>
-<mat-grid-list cols="6" rowHeight="1:1">
-  <mat-grid-tile class="cajaCentral" *ngFor="let player of listaCompleta">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image">
-        <img [src]="getFotoTeamPlayer(player)" alt=""> 
-        </div>
-        <mat-card-title><a [routerLink]="['/player-details',anio,player.personId]" routerLinkActive="Active" >{{ player.lastName }}</a></mat-card-title>
-        <mat-card-subtitle style="font-size: 0.8 em;">{{ player.firstName }} {{ player.lastName }}</mat-card-subtitle>
-      </mat-card-header>
-      <img [src]="getFotoPlayer(player)"
-      onerror="this.src='https://images.hive.blog/p/YpihifdXP4WNbGMdjw7e3DuhJWBvCw4SfuLZsrnJYHEpsqZFkiGGNCQDjARFNbziVgPQ8u8C8ZxBkWry1BGDcMPZKLV38JyYuGuLoZzVxW1ykgqw44hzmou5gb6WTjZebNjYRp6wFfpp9cPa2vLwcnV4pqqJ78K3PoNyRRUMwtp6?format=match&mode=fit'"
-        alt="{{ player.firstName }}" style="max-width:600px; height: 150px;" 
-        />
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="cajaCentral">
+  <app-player-card class="tarjeta" *ngFor="let p of listaCompleta" [player]="p" [anio]="anio">
+
+</app-player-card>
+
+</div>
