@@ -8,12 +8,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { TeamsDetailComponent } from './components/teams/teams-detail/teams-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
+import { TeamSingleCardComponent } from './components/teams/team-single-card/team-single-card.component';
+import { FiltroBusquedaPipe } from './pipes/filtro-busqueda.pipe';
 
 @NgModule({
   declarations: [
@@ -27,18 +28,15 @@ import { PlayerCardComponent } from './components/player-card/player-card.compon
     CarouselComponent,
     TeamsDetailComponent,
     PageNotFoundComponent,
-    PlayerCardComponent
-
-
-
+    PlayerCardComponent,
+    TeamSingleCardComponent,
+    FiltroBusquedaPipe
   ],
   imports: [
     AppRoutingModule,
     ImportsMaterialModule,
     FlexLayoutModule,
-    NgbModule,
     ReactiveFormsModule,
-    FormsModule
 
   ],
   providers: [],

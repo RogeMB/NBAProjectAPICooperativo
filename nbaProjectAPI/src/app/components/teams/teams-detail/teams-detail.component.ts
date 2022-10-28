@@ -35,7 +35,7 @@ export class TeamsDetailComponent implements OnInit {
   idTeamLink: String= {} as String;
   yearLink = new Date().getFullYear();
   playerList2: Player [] = [];
-  
+  scroll_bar: any;
 
   constructor(private route: ActivatedRoute, private _router: Router, private playerService: PlayersService, private teamsService: TeamsService, private rosterService: TeamsDetailService, private coachService: CoachsService) { 
     this._router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -44,10 +44,10 @@ export class TeamsDetailComponent implements OnInit {
   ngOnInit(): void {
 
     /*this.teamID = String(this.route.snapshot.paramMap.get('teamid'))*/
-
     this.getParams();
-    this.getSeason(this.yearLink);
     this.scrollingInTheDeep(this.scrollBar);
+    
+    this.getSeason(this.yearLink);
     this.getTeam();
     this.getCoach(this.yearLink);
     this.getRosterTeam(this.yearLink, this.idTeamLink);
@@ -152,7 +152,11 @@ export class TeamsDetailComponent implements OnInit {
   }
 
   getFotoPlayer(playerId: string) {
-    return `${this.playerUrl}/${playerId}.png`;
+    if(!playerId)
+      return this.onImgError;
+      else{
+        return `${this.playerUrl}/${playerId}.png`;
+      }
   }
 
   onImgError(event: ErrorEvent) {

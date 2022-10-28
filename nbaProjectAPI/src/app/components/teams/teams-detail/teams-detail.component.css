@@ -27,7 +27,7 @@
 
 
 #scroll-indicator {
-  position: sticky;
+  position: fixed;
   top: 0px;
   height: 15px;
   width: 0%;
@@ -77,15 +77,44 @@ dd {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   width: 50%;
+  background-color: #d3d3d3d7;
 
 }
 
 .customDiv {
-  display: block;
+  display: flex;
   justify-content: center;
   text-align: center;
 }
 
 body {
   overflow-y: hidden !important;
+}
+
+th {
+  font-size: 1.5em;
+  width: 500px;
+  justify-content: space-around;
+  letter-spacing: 5px;
+  background-color: wheat;
+}
+
+th tr {
+  margin-bottom: 30px;
+}
+
+tr td {
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+td img {
+  border-radius: 50% 25% 50% 25%;
+  border: 3px solid rgba(0, 0, 0, 0.829);
+  background: linear-gradient(to right, rgba(106, 122, 245, 0.699), rgba(245, 87, 108, 0.705));
+}
+
+tr:nth-child(even) {
+  background-color: #d3d3d3d7;
 }

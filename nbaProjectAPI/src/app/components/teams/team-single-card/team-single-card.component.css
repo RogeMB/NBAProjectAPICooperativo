@@ -1,0 +1,12 @@
+.example-card:hover {
+    transform: scale(1.035, 1.035);
+    box-shadow: 0 0px 40px rgba(228, 227, 227, 0.788);
+    background-image: linear-gradient(to right, #022f74, #3c19bb, #640093, #bf007f, #eb122f);
+    transition: all 0.5s ease-in;
+    color: whitesmoke
+  }  
+  
+.example-card:hover img {
+    transform: translateY(-10px);
+    transition: all 0.5s ease-in;
+}

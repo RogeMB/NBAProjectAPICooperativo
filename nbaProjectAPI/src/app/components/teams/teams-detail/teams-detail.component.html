@@ -1,4 +1,6 @@
+
 <app-header></app-header>
+<div id="scroll-indicator"></div>
 
 <div [ngStyle]="{ 'text-align': 'center' }" class="cajaImg">
   <img [src]="getLogoUrl()" [ngStyle]="{ width: '20vw' }" class="image" (error)="onImgError($event)"  alt="Photo of team's logo"/>
@@ -23,10 +25,9 @@
     </ol>
   </nav>
 
-  <div class="text-light fs-2 m-2 text-center w-100 h-100">{{teamSelected.urlName.toUpperCase()}}</div>
+  <div class="text-light fs-2 m-2 text-center w-100 h-100">{{(teamSelected.urlName || '').toUpperCase()}}</div>
 
   <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
-  <div id="scroll-indicator"></div>
 
   <div fxFlex="100" class="m-2">
     <mat-accordion fxFlex="50" class="me-1" >
@@ -36,7 +37,7 @@
             Basic Info
           </mat-panel-title>
           <mat-panel-description class="text-center " >
-            Open for basic info of<span class="fw-bold fs-6">&nbsp;{{teamSelected.urlName.toUpperCase()}}</span>
+            Open for basic info of<span class="fw-bold fs-6">&nbsp;{{(teamSelected.urlName || '').toUpperCase()}}</span>
             &nbsp;<mat-icon>info</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
@@ -73,7 +74,7 @@
             Coach Info
           </mat-panel-title>
           <mat-panel-description class="text-center " >
-            Coach of<span class="fw-bold fs-6">&nbsp;{{teamSelected.urlName.toUpperCase()}}</span>
+            Coach of<span class="fw-bold fs-6">&nbsp;{{(teamSelected.urlName || '').toUpperCase()}}</span>
             &nbsp;<mat-icon>person_pin</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
@@ -105,22 +106,31 @@
             Roster Info
           </mat-panel-title>
           <mat-panel-description class="text-center " >
-            Roster of<span class="fw-bold fs-6">&nbsp;{{teamSelected.urlName.toUpperCase()}}</span>
+            Roster of<span class="fw-bold fs-6">&nbsp;{{(teamSelected.urlName || '').toUpperCase()}}</span>
             &nbsp;<mat-icon>person_pin</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
 
           <div class="customDiv">
-            <dl class="d-flex">
-              <dt class="float-start">Player Name</dt>
-              <dd *ngFor="let player of playerList2">{{player.firstName}}&nbsp;{{player.lastName}}</dd>
-            </dl>
-            <dl>
-              <dt class="float-end">Player Photo</dt>
-              <dd *ngFor="let player of playerList2">
-                <img [src]="getFotoPlayer(player.personId)" [ngStyle]="{ width: '10vw' }" class="image" (error)="onImgError($event)" alt="Photo of Coach">
-              </dd>
-            </dl>
+            <table fxLayOut="row" fxLayOutAlign="space-around">
+              <thead> 
+                <tr >
+                  <th>Player Name</th>
+                  <th>Player Photo</th>
+                </tr>
+              </thead>
+               
+              <tbody>
+                <tr *ngFor="let player of playerList2">
+                  <td>
+                    {{player.firstName}}&nbsp;{{player.lastName}}
+                  </td>
+                  <td >
+                    <img [src]="getFotoPlayer(player.personId)" [ngStyle]="{ width: '10vw' }" class="image" (error)="onImgError($event)" alt="Photo of Coach">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
       </mat-expansion-panel>
     </mat-accordion>

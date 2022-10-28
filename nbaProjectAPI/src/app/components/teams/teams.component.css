@@ -15,7 +15,7 @@
 
 
 .example-button-container{
-  position: fixed;
+  position: sticky;
   float: right;
   cursor: pointer;
   right: 50px;
@@ -26,8 +26,7 @@
 
 
 #scroll-indicator {
-  position: sticky;
-  top: 0px;
+  position: fixed;
   height: 15px;
   width: 0%;
   -webkit-border-top-right-radius: 10px;
@@ -40,15 +39,3 @@
   z-index: 100;
 }
 
-.example-card:hover {
-  transform: scale(1.035, 1.035);
-  box-shadow: 0 0px 40px rgba(228, 227, 227, 0.788);
-  background-image: linear-gradient(to right, #022f74, #3c19bb, #640093, #bf007f, #eb122f);
-  transition: all 0.5s ease-in;
-  color: whitesmoke
-}  
-
-.example-card:hover img {
-  transform: translateY(-10px);
-  transition: all 0.5s ease-in;
-}
