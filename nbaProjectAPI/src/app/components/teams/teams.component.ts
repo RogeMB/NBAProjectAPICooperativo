@@ -10,16 +10,17 @@ import { TeamDetails } from 'src/app/Interfaces/teams.interface';
 export class TeamsComponent implements OnInit {
 
   teamUrl : string = 'https://cdn.nba.com/logos/nba/';
-  teamList: TeamDetails[] = []
+  teamList: TeamDetails[] = [];
   year: number = 0;
-  yearList: number[] = []
-  prueba:string = ''
+  yearList: number[] = [];
+ /* searched: string = '';*/
   scrollBar: any;
+  campoBusqueda: string = '';
 
   constructor(private teamsService: TeamsService) { }
 
   ngOnInit(): void {
-
+    
     this.getSeason(this.year);
     this.scrollingInTheDeep(this.scrollBar);
   }

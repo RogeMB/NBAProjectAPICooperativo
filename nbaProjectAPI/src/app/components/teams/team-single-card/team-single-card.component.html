@@ -1,0 +1,14 @@
+
+<mat-card class="example-card"> <!--here inside that mat card-->
+  <mat-card-content class="fw-bold text-center fs-3">
+    <p>
+      {{team.nickname}}
+    </p>
+  </mat-card-content>
+  <img mat-card-image [src]="getLogoUrl(team)" class="image" (error)="onImgError($event)"  alt="Photo of team's logo">
+  
+  <a [routerLink]="['/teamsdetails/', this.year, team.teamId]" class="text-decoration-none"><button mat-button class="btn btn-light w-100 fs-4 fw-bold">Details</button></a>
+</mat-card>
+
+<!--*ngIf="team.fullName.toLowerCase().startsWith(searched.toLocaleLowerCase()) || team.fullName.toUpperCase().startsWith(searched.toLocaleUpperCase())
+|| team.nickname.toLowerCase().startsWith(searched.toLocaleLowerCase()) || team.nickname.toLocaleUpperCase().startsWith(searched.toLocaleUpperCase())  "-->
